@@ -1,0 +1,87 @@
+<h2> Bienvenido a #####, #####.</h2>
+<br>
+
+
+<nav class="navbar navbar-expand-lg">
+
+  <div class="container-fluid">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Choferes
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" (click) = "crearChofer()"> ALTA </a></li>
+          <li><a class="dropdown-item"> MODIFICACION</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" (click) = "listaChofer()"> LISTA</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Autobuses
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item"> ALTA </a></li>
+          <li><a class="dropdown-item"> MODIFICACION</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item"> LISTA</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Ciudades
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item"> ALTA </a></li>
+          <li><a class="dropdown-item"> MODIFICACION</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item"> LISTA</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Rutas
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item"> ALTA </a></li>
+          <li><a class="dropdown-item"> MODIFICACION</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item"> LISTA</a></li>
+        </ul>
+      </li>
+
+
+      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" style="width: 30%;">
+      <button class="btn btn-outline-success" type="submit" (click)="buscar()"> Search </button>
+
+
+  </div>
+
+</nav>
+
+
+<br>
+
+<div>
+  <app-chofer *ngIf="pagina == 'listaChofer'"></app-chofer>
+  <app-altaChofer *ngIf="pagina == 'altaChofer'" (cancelar) = "cancelarChofer($event)"></app-altaChofer>
+  <app-busqueda *ngIf="pagina == 'modChofer'"></app-busqueda>
+</div>
+
+
+
+<div>
+  <app-busqueda *ngIf="pagina == 'busqueda'"></app-busqueda>
+</div>
