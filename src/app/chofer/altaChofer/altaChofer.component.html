@@ -2,31 +2,31 @@
   <div>
     <br> <label for=""> Datos personales </label> <br>
     <br> DNI <br>
-    <input type="number">
+    <input type="number" [(ngModel)]="dni">
     <br> Legajo <br>
-    <input type="number">
+    <input type="number" [(ngModel)]="legajo">
     <br> Nombre <br>
-    <input type="text">
+    <input type="text" [(ngModel)]="nombre">
     <br> Apellido <br>
-    <input type="text">
+    <input type="text" [(ngModel)]="apellido">
     <br> Fecha de Nacimiento <br>
-    <input type="text" style="margin-right: 50px;"> <span> Ejemplo </span> <input type="text" value="dia/mes/año" readonly>
+    <input type="text" style="margin-right: 50px;" [(ngModel)]="fechaNac"> <span> Ejemplo </span> <input type="text" value="dia/mes/año" readonly style="cursor: default;">
   </div>
 
   <div>
     <br> <label for=""> Datos de cuenta </label> <br>
     <br> Usuario <br>
-    <input type="text">
+    <input type="text" [(ngModel)]="usuario">
     <br> Mail <br>
-    <input type="text">
+    <input type="text" [(ngModel)]="mail">
     <br> Contraseña <br>
-    <input type="text">
+    <input type="text" [(ngModel)]="contrasenia">
     <br> Confirmar contraseña <br>
-    <input type="text">
+    <input type="text" [(ngModel)]="extraContrasenia">
   </div>
 
 </div>
 
 <br>
 <button (click) = "verificarRegistro()"> Registrar </button> 
-<button (click) = "inicio()"> Cancelar </button>
+<button (click) = "volver()"> Cancelar </button>

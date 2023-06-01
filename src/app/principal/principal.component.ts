@@ -1,4 +1,6 @@
 import { Component, OnInit} from '@angular/core';
+import { Chofer } from '../clases/chofer';
+import { Usuario } from '../clases/usuario';
 
 @Component({
   selector: 'app-principal',
@@ -6,7 +8,11 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
+
   pagina : string = "";
+  opciones = ["Por matricula","Parada en ciudad", "Ciudad destino"];
+  usuarios : Usuario[] = [];
+
 
   crearChofer(){
     this.pagina = "altaChofer";
@@ -20,11 +26,15 @@ export class PrincipalComponent implements OnInit {
     this.pagina = "busqueda";
   }
 
-  cancelarChofer(c : number){
+  cancelarChofer(u : Usuario){
+    this.usuarios.push(u);
     this.listaChofer();
   }
 
   ngOnInit() : void{
   
+  }
+
+  constructor(){
   }
 }

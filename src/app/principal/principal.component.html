@@ -12,7 +12,6 @@
         </a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" (click) = "crearChofer()"> ALTA </a></li>
-          <li><a class="dropdown-item"> MODIFICACION</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
@@ -26,7 +25,6 @@
         </a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item"> ALTA </a></li>
-          <li><a class="dropdown-item"> MODIFICACION</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
@@ -40,7 +38,6 @@
         </a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item"> ALTA </a></li>
-          <li><a class="dropdown-item"> MODIFICACION</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
@@ -54,7 +51,6 @@
         </a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item"> ALTA </a></li>
-          <li><a class="dropdown-item"> MODIFICACION</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
@@ -62,7 +58,13 @@
         </ul>
       </li>
 
-
+      <select [(ngModel)]="opciones">
+        <option 
+        *ngFor="let op of opciones" [ngValue]="op">
+          {{op}}
+        </option>
+      </select>
+        
       <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" style="width: 30%;">
       <button class="btn btn-outline-success" type="submit" (click)="buscar()"> Search </button>
 
@@ -75,8 +77,8 @@
 <br>
 
 <div>
-  <app-chofer *ngIf="pagina == 'listaChofer'"></app-chofer>
-  <app-altaChofer *ngIf="pagina == 'altaChofer'" (cancelar) = "cancelarChofer($event)"></app-altaChofer>
+  <app-chofer *ngIf="pagina == 'listaChofer'" [usuarios] = "usuarios"></app-chofer>
+  <app-altaChofer *ngIf="pagina == 'altaChofer'" (cancelar) = "cancelarChofer($event)" [usuarios] = "usuarios"></app-altaChofer>
   <app-busqueda *ngIf="pagina == 'modChofer'"></app-busqueda>
 </div>
 

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Usuario } from '../clases/usuario';
 
 @Component({
   selector: 'app-chofer',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./chofer.component.css']
 })
 export class ChoferComponent {
-  
+  @Input() usuarios : Usuario[] = [];
 }

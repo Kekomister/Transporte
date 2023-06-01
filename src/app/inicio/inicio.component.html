@@ -1,5 +1,12 @@
 <h3> Esta es la aplicacion ##### </h3>
 
-<app-log-in *ngIf="flag == 0" (cancelar)="recuperar($event)"></app-log-in>
-<app-recuperar *ngIf="flag == 1" (cancelar)="ingresar($event)"></app-recuperar>
+<div>
+  <br> Usuario o Mail<br>
+  <input type="text">
+  <br> Contraseña <br>
+  <input type="text">
+</div>
 
+<div>
+  <button (click) = "verificarIngreso()"> Ingresar </button>
+</div>

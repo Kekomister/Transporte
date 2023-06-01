@@ -1,3 +1,23 @@
-<div>
-    sadasdas
-</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Legajo</th>
+            <th>Dni</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+        </tr>
+    </thead>
+    <tbody *ngFor = "let u of usuarios">
+        <tr>
+            <td> {{u.chofer?.legajo}} </td>
+            <td> {{u.chofer?.dni}} </td>
+            <td> {{u.chofer?.nombre}} </td>
+            <td> {{u.chofer?.apellido}} </td>
+            <td> {{u.chofer?.fechaNac}} </td>
+            <button> Modificar </button>
+            <button> Eliminar </button>
+        </tr>
+        
+    </tbody>
+</table>

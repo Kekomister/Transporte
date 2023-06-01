@@ -7,14 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent {
-  flag : number = 0;
+  entrar : boolean = false;
 
-  ingresar(i : number){
-		this.flag = 0;
+  verificarIngreso(){
+    this.ingresar();
   }
-  recuperar(r : number){
-		this.flag = 1;
-	}
+
+  ingresar(){
+    this.entrar = true;
+    alert("Ingresado!");
+    this.router.navigate(['/principal']);
+  }
+
 
   constructor(private router : Router){}
 
