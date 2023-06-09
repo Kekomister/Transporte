@@ -1,0 +1,21 @@
+<div>
+    <div>
+      <br><b> <label for=""> Datos personales </label> </b><br>
+      <br> <b> DNI </b><br>
+      <input type="number" [(ngModel)]="dni"><br>
+      <br><b> Legajo </b><br>
+      <input type="number" [(ngModel)]="legajo" readonly><br>
+      <br><b> Nombre </b><br>
+      <input type="text" [(ngModel)]="nombre"><br>
+      <br><b> Apellido </b><br>
+      <input type="text" [(ngModel)]="apellido"><br>
+      <br><b> Fecha de Nacimiento </b><br>
+      <br><input type="text" style="margin-right: 50px;" [(ngModel)]="fechaNac"> <span> Ejemplo </span> <input type="text" value="dia/mes/año" readonly style="cursor: default;"><br>
+    </div>
+  
+  
+  </div>
+  
+  <br>
+  <button (click) = "verificarVacios()"> Registrar </button> 
+  <button (click) = "volver()"> Cancelar </button>

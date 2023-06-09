@@ -14,6 +14,8 @@ import { ChoferComponent } from './chofer/chofer.component';
 import { RutaComponent } from './ruta/ruta.component';
 import { CiudadComponent } from './ciudad/ciudad.component';
 import { AutobusComponent } from './autobus/autobus.component';
+import { ModificarChoferComponent } from './chofer/modificar-chofer/modificar-chofer.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { AutobusComponent } from './autobus/autobus.component';
     ChoferComponent,
     RutaComponent,
     CiudadComponent,
-    AutobusComponent
+    AutobusComponent,
+    ModificarChoferComponent
   ],
   imports: [
     BrowserModule,

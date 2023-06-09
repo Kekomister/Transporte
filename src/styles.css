@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-image: url("https://img.freepik.com/vector-premium/estacion-autobuses-escenas-exteriores_1300-1169.jpg?w=1380");
+    background-size: cover;
+}

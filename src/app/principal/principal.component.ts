@@ -1,6 +1,8 @@
-import { Component, OnInit} from '@angular/core';
-import { Chofer } from '../clases/chofer';
+import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../clases/usuario';
+import { UsersService } from '../services/users.service';
+import { Router } from '@angular/router';
+import { Chofer } from '../clases/chofer';
 
 @Component({
   selector: 'app-principal',
@@ -9,32 +11,44 @@ import { Usuario } from '../clases/usuario';
 })
 export class PrincipalComponent implements OnInit {
 
-  pagina : string = "";
-  opciones = ["Por matricula","Parada en ciudad", "Ciudad destino"];
-  usuarios : Usuario[] = [];
+  pagina: string = "listaChofer";
+  opciones = ["Nombre", "Por matricula", "Parada en ciudad", "Ciudad destino"];
+  opcionElegida: string | undefined;
+  busqueda: string = "";
+  choferModificar: Chofer | undefined;
 
-
-  crearChofer(){
+  crearChofer() {
     this.pagina = "altaChofer";
   }
 
-  listaChofer(){
+  listaChofer() {
     this.pagina = "listaChofer";
   }
 
-  buscar() : void{
-    this.pagina = "busqueda";
+  buscar(): void {
+    if (this.opcionElegida == this.opciones[0]) {
+      this.pagina = "busqueda";
+    }
   }
 
-  cancelarChofer(u : Usuario){
-    this.usuarios.push(u);
+  agregarChofer(u: Usuario) {
+    this.users.agregarUsuario(u);
     this.listaChofer();
   }
 
-  ngOnInit() : void{
-  
+  logout() {
+    this.router.navigate(['inicio']);
   }
 
-  constructor(){
+  choferModificado(chofer: Chofer) {
+    this.choferModificar = chofer;
+    this.pagina = "modChofer";
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  constructor(private users: UsersService, private router: Router) {
   }
 }

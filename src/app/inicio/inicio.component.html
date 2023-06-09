@@ -1,12 +1,28 @@
-<h3> Esta es la aplicacion ##### </h3>
+<div class="todo">
 
-<div>
-  <br> Usuario o Mail<br>
-  <input type="text">
-  <br> Contraseña <br>
-  <input type="text">
-</div>
+  <div>
 
-<div>
-  <button (click) = "verificarIngreso()"> Ingresar </button>
+    <h3> Esta es la aplicacion Enrutados </h3>
+
+  </div>
+
+  <div class="contenedor-datos">
+
+    <div>
+
+      <p class="datos"> Usuario </p>
+      <input type="text" [(ngModel)]="usuario">
+      <p class="datos"> Contraseña </p>
+      <input type="password" [(ngModel)]="contrasenia">
+
+    </div>
+
+    <div>
+
+      <button (click)="verificarIngreso()"> Ingresar </button>
+
+    </div>
+
+  </div>
+
 </div>

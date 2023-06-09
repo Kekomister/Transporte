@@ -1,6 +1,45 @@
-button {
+.todo {
+    display: block;
+    margin-top: 300px;
+    margin-left: 750px;
+    width: 20%;
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+  }
+
+.datos{
+    margin-top: 15px;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bolder;
+}
+
+h3{
     margin: 5px;
     margin-top: 10px;
-    border: solid 1px;
-    background-color: antiquewhite;
+    background-color: #1ddfa5; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    font-style: italic;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+
+button {
+    margin: 5px;
+    margin-top: 20px;
+    background-color: #1ddfa5; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }

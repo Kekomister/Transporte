@@ -1,32 +1,32 @@
 <div>
   <div>
-    <br> <label for=""> Datos personales </label> <br>
-    <br> DNI <br>
-    <input type="number" [(ngModel)]="dni">
-    <br> Legajo <br>
-    <input type="number" [(ngModel)]="legajo">
-    <br> Nombre <br>
-    <input type="text" [(ngModel)]="nombre">
-    <br> Apellido <br>
-    <input type="text" [(ngModel)]="apellido">
-    <br> Fecha de Nacimiento <br>
-    <input type="text" style="margin-right: 50px;" [(ngModel)]="fechaNac"> <span> Ejemplo </span> <input type="text" value="dia/mes/año" readonly style="cursor: default;">
+    <br><b> <label for=""> Datos personales </label> </b><br>
+    <br> <b> DNI </b><br>
+    <input type="number" [(ngModel)]="dni"><br>
+    <br><b> Legajo </b><br>
+    <input type="number" [(ngModel)]="legajo"><br>
+    <br><b> Nombre </b><br>
+    <input type="text" [(ngModel)]="nombre"><br>
+    <br><b> Apellido </b><br>
+    <input type="text" [(ngModel)]="apellido"><br>
+    <br><b> Fecha de Nacimiento </b><br>
+    <br><input type="text" style="margin-right: 50px;" [(ngModel)]="fechaNac"> <span> Ejemplo </span> <input type="text" value="dia/mes/año" readonly style="cursor: default;"><br>
   </div>
 
   <div>
-    <br> <label for=""> Datos de cuenta </label> <br>
-    <br> Usuario <br>
-    <input type="text" [(ngModel)]="usuario">
-    <br> Mail <br>
-    <input type="text" [(ngModel)]="mail">
-    <br> Contraseña <br>
-    <input type="text" [(ngModel)]="contrasenia">
-    <br> Confirmar contraseña <br>
-    <input type="text" [(ngModel)]="extraContrasenia">
+    <br><b> <label for=""> Datos de cuenta </label> </b><br>
+    <br><b> Usuario </b><br>
+    <input type="text" [(ngModel)]="usuario"><br>
+    <br><b> Mail </b><br>
+    <input type="text" [(ngModel)]="mail"><br>
+    <br><b> Contraseña </b><br>
+    <input type="text" [(ngModel)]="contrasenia"><br>
+    <br><b> Confirmar contraseña </b><br>
+    <input type="text" [(ngModel)]="extraContrasenia"><br>
   </div>
 
 </div>
 
 <br>
-<button (click) = "verificarRegistro()"> Registrar </button> 
+<button (click) = "verificarVacios()"> Registrar </button> 
 <button (click) = "volver()"> Cancelar </button>

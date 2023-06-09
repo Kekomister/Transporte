@@ -5,3 +5,46 @@ nav{
 .dropdown-item{
     cursor: pointer;
 }
+
+h2{
+   
+    margin-top: 10px;
+    background-color: #AFEEEE; 
+    background-size:cover;
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration:rgb(246, 250, 250);
+    display: inline-block;
+    font-size:50px;
+    text-shadow: 2px 2px 5px rgb(46, 161, 127);
+    
+}
+
+/* .fondo{  
+    background-image: url('/assets/fondo.jpeg');
+    background: transparent;
+    } */
+
+    .fondo {
+        height: 100%;
+        /* background-image: url("https://elements-cover-images-0.imgix.net/3d848a51-991c-416f-bd92-2608453e5de8?auto=compress%2Cformat&fit=max&w=1019&s=7482dcbe95d4707315fdab24896b5328"); */
+        background-size: cover;
+        background-repeat: no-repeat;
+       
+        background-position: center center;
+      }
+
+      .botonLogout {
+        background-color: blueviolet;
+        color: blanchedalmond;
+        padding: 15px;
+        display: flex;
+        float: right;
+        border: 1px solid;
+        margin-right: auto;
+        margin-left: auto;
+        border-radius: 5px;
+        /* margin-left: 1780px; */
+      }

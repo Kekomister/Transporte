@@ -1,1 +1,23 @@
-<h1> BUSCADO! </h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Legajo</th>
+            <th>Dni</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+        </tr>
+    </thead>
+    <tbody *ngFor = "let u of usuariosElegidos, let indice = index">
+        <tr>
+            <td> {{u.chofer?.legajo}} </td>
+            <td> {{u.chofer?.dni}} </td>
+            <td> {{u.chofer?.nombre}} </td>
+            <td> {{u.chofer?.apellido}} </td>
+            <td> {{u.chofer?.fechaNac}} </td>
+            <button (click)="modificar(u.chofer)">Modificar</button>
+            <button (click)="eliminarChofer(indice)"> Eliminar </button>
+        </tr>
+        
+    </tbody>
+</table>

@@ -1,89 +1,94 @@
-<h2> Bienvenido a #####, #####.</h2>
+
+<img src="assets/BUS.jpg" style="width: 100px;">
+<h2> Bienvenido a "Enrutados!"</h2>
+<div class="fondo">
 <br>
-
-
+<div>
+  <button (click)="logout()" class="botonLogout"  >Logout</button>
+</div>
 <nav class="navbar navbar-expand-lg">
 
   <div class="container-fluid">
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Choferes
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" (click) = "crearChofer()"> ALTA </a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" (click) = "listaChofer()"> LISTA</a></li>
-        </ul>
-      </li>
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Choferes
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" (click)="crearChofer()"> ALTA </a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" (click)="listaChofer()"> LISTA</a></li>
+      </ul>
+    </div>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Autobuses
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item"> ALTA </a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item"> LISTA</a></li>
-        </ul>
-      </li>
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Autobuses
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item"> ALTA </a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item"> LISTA</a></li>
+      </ul>
+    </div>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Ciudades
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item"> ALTA </a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item"> LISTA</a></li>
-        </ul>
-      </li>
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Ciudades
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item"> ALTA </a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item"> LISTA</a></li>
+      </ul>
+    </div>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Rutas
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item"> ALTA </a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item"> LISTA</a></li>
-        </ul>
-      </li>
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Rutas
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item"> ALTA </a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item"> LISTA</a></li>
+      </ul>
+    </div>
 
-      <select [(ngModel)]="opciones">
-        <option 
-        *ngFor="let op of opciones" [ngValue]="op">
-          {{op}}
-        </option>
-      </select>
-        
-      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" style="width: 30%;">
-      <button class="btn btn-outline-success" type="submit" (click)="buscar()"> Search </button>
+    <select [(ngModel)] = "opcionElegida">
+      <option *ngFor="let op of opciones" [ngValue]="op">
+        {{op}}
+      </option>
+    </select>
+
+    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" style="width: 30%;" [(ngModel)] = "busqueda">
+    <button class="btn btn-outline-success" type="submit" (click)="buscar()"> Search </button>
 
 
   </div>
 
 </nav>
 
-
 <br>
 
+
 <div>
-  <app-chofer *ngIf="pagina == 'listaChofer'" [usuarios] = "usuarios"></app-chofer>
-  <app-altaChofer *ngIf="pagina == 'altaChofer'" (cancelar) = "cancelarChofer($event)" [usuarios] = "usuarios"></app-altaChofer>
-  <app-busqueda *ngIf="pagina == 'modChofer'"></app-busqueda>
+  <app-chofer *ngIf="pagina == 'listaChofer'" (choferModificado)="choferModificado($event)" ></app-chofer>
+  <app-altaChofer *ngIf="pagina == 'altaChofer'" (agregar)="agregarChofer($event)"></app-altaChofer>
+  <app-modificar-chofer *ngIf="pagina == 'modChofer'"  [chofer] = "choferModificar" (agregar)="listaChofer()" ></app-modificar-chofer>
 </div>
 
 
 
-<div>
-  <app-busqueda *ngIf="pagina == 'busqueda'"></app-busqueda>
+  <div>
+    <app-busqueda *ngIf="pagina == 'busqueda'" [aBuscar] = "busqueda"></app-busqueda>
+  </div>
+
 </div>

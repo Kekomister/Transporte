@@ -2,6 +2,8 @@ import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Chofer } from 'src/app/clases/chofer';
 import { Usuario } from 'src/app/clases/usuario';
+import { ChequeosService } from 'src/app/services/chequeos.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-altaChofer',
@@ -9,71 +11,105 @@ import { Usuario } from 'src/app/clases/usuario';
   styleUrls: ['./altaChofer.component.css']
 })
 export class AltaChoferComponent {
-  @Input() usuarios : Usuario[] = [];
-  @Output() cancelar : EventEmitter<Usuario> = new EventEmitter<Usuario>();
-  
- // datos personales
-  dni : number | undefined;
-  legajo : number | undefined;
-  nombre : string | undefined;
-  apellido : string | undefined;
-  fechaNac : string | undefined;
+  usuarios: Usuario[] = [];
+  @Output() agregar: EventEmitter<Usuario> = new EventEmitter<Usuario>();
 
- // datos de cuenta
+  // datos personales
+  dni: number | undefined;
+  legajo: number | undefined;
+  nombre: string | undefined;
+  apellido: string | undefined;
+  fechaNac: string | undefined;
 
-  usuario : string | undefined;
-  mail : string | undefined;
-  contrasenia : string | undefined;
-  extraContrasenia : string | undefined;
+  // datos de cuenta
 
-  usuarioPermitido : Usuario | undefined;
-  
-  verificarRegistro(){
-    let hayProblema = false;
-    let c = new Chofer(this.dni, this.legajo,this.nombre,this.apellido,this.fechaNac);
-    let u = new Usuario(this.usuario,this.mail,this.contrasenia,this.extraContrasenia,c);
+  usuario: string | undefined;
+  mail: string | undefined;
+  contrasenia: string | undefined;
+  extraContrasenia: string | undefined;
 
-    hayProblema = this.verificarChofer(c);
-    if(!hayProblema){
-      hayProblema = this.verificarUsuario(u);
-      if(!hayProblema){
-        alert("Registrado!");
-        this.usuarioPermitido = u;
-        this.volver();
-      }else{
-        alert("Ya esta registrado ese mail!");
-      }
+  // datos extras
+  usuarioPermitido: Usuario | undefined;
+
+  verificarVacios(){
+    let estaVacio = false;
+    let textos = [this.nombre,this.apellido,this.fechaNac,this.usuario,this.mail,this.contrasenia,this.extraContrasenia]
+    let numeros = [this.dni,this.legajo];
+
+    estaVacio = this.chequeos.verificarString(textos);
+    if(estaVacio){
+      alert("Algo esta vacio");
     }else{
-      alert("Ya esta registrado ese legajo!");
+      estaVacio = this.chequeos.verificarNumber(numeros);
+      if(estaVacio){
+        alert("Dni o Legajo esta vacio");
+      }else{
+        this.verificarRegistro();
+      }
     }
   }
 
-  verificarChofer(c : Chofer) : boolean{
+  verificarRegistro() {
+
+    let hayProblema = false;
+    let c = new Chofer(this.dni, this.legajo, this.nombre, this.apellido, this.fechaNac);
+    let u = new Usuario(this.usuario, this.mail, this.contrasenia, c);
+
+    hayProblema = this.verificarContra(u);
+    if (!hayProblema) {
+      hayProblema = this.verificarChofer(c);
+      if (!hayProblema) {
+        hayProblema = this.verificarUsuario(u);
+        if (!hayProblema) {
+          alert("Registrado!");
+          this.usuarioPermitido = u;
+          this.volver();
+        } else {
+          alert("Ya esta registrado ese mail!");
+        }
+      } else {
+        alert("Ya esta registrado ese legajo!");
+      }
+    } else {
+      alert("Las contraseñas no coinciden!");
+    }
+  }
+
+  verificarContra(u: Usuario): boolean {
+    let distintas = false;
+    if (u.contrasenia != this.extraContrasenia) {
+      distintas = true;
+    }
+    return distintas;
+  }
+
+  verificarChofer(c: Chofer): boolean {
     let yaEsta = false;
-    for(let i = 0; i < this.usuarios.length && !yaEsta ;i++){
-      if(this.usuarios[i].chofer?.legajo == c.legajo){
+    for (let i = 0; i < this.usuarios.length && !yaEsta; i++) {
+      if (this.usuarios[i].chofer?.legajo == c.legajo) {
         yaEsta = true;
       }
     }
     return yaEsta;
   }
 
-  verificarUsuario(u : Usuario) : boolean{
+  verificarUsuario(u: Usuario): boolean {
     let yaEsta = false;
-    for(let i = 0; i < this.usuarios.length && !yaEsta ;i++){
-      if(this.usuarios[i].mail == u.mail){
+    for (let i = 0; i < this.usuarios.length && !yaEsta; i++) {
+      if (this.usuarios[i].mail == u.mail || this.usuarios[i].usuario == u.usuario) {
         yaEsta = true;
       }
     }
     return yaEsta;
   }
 
-  volver(){
-    this.cancelar.emit(this.usuarioPermitido);
+  volver() {
+    this.agregar.emit(this.usuarioPermitido);
   }
 
-  constructor(private router : Router){}
+  constructor(private router: Router, private chequeos : ChequeosService, private users : UsersService) { }
 
-  ngOnInit(){
+  ngOnInit() {
+    this.usuarios = this.users.getUsuarios();
   }
 }
