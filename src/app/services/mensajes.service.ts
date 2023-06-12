@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import { UsersService } from './users.service';
-import { Usuario } from '../clases/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -10,47 +9,48 @@ export class MensajesService {
 
   constructor(private users : UsersService) { }
 
-  ingreso() {
+  success(titulo : string, textoBoton : string) {
     Swal.fire({
-      title: 'Ingresado correctamente',
-      confirmButtonText: 'Genial',
+      title: titulo,
+      confirmButtonText: textoBoton,
+      icon : 'success',
       allowEnterKey: true
     });
   }
 
-  usuarioIncorrecto() {
+  error(titulo : string, texto : string, textoBoton : string) {
     Swal.fire({
-      title: 'Error!',
-      text: 'El usuario o contraseña es erroneo',
+      title: titulo,
+      text: texto,
       icon: 'error',
-      confirmButtonText: 'Entendido',
+      confirmButtonText: textoBoton,
       allowEnterKey: true
     })
   }
 
-  preguntarBorrado(legajo : number | undefined){
-    Swal.fire({
-      title: 'Estas seguro de borrar al chofer '+legajo+'?',
-      text: "No vas a poder ir para atras!",
+  preguntarBorrado(titulo : string, texto : string, textoBotonSi : string, textoBotonNo : string){
+    return Swal.fire({
+      title: titulo,
+      text: texto,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, borrar!',
-      cancelButtonText: 'Cancelar',
+      confirmButtonText: textoBotonSi,
+      cancelButtonText: textoBotonNo,
       allowEnterKey: true,
       timer: 30000,
       timerProgressBar: true,
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        Swal.fire('Chofer '+legajo+' borrado!', '', 'success')
-        this.users.borrarUsuario(legajo);
-      } else if (result.isDismissed) {
-        Swal.fire('No se borro el chofer '+legajo, '', 'info')
-      }
     })
   }
 
+  info(titulo : string, textoBoton : string){
+    Swal.fire({
+      title: titulo,
+      confirmButtonText: textoBoton,
+      icon : 'info',
+      allowEnterKey: true
+    });
+  }
 
 }

@@ -10,26 +10,35 @@ import { Chofer } from '../clases/chofer';
   styleUrls: ['./chofer.component.css']
 })
 export class ChoferComponent {
-  usuarios : Usuario[] = [];
-  @Output() choferModificado : EventEmitter<Chofer> = new EventEmitter<Chofer>();
+  usuarios: Usuario[] = [];
+  @Output() choferModificado: EventEmitter<Chofer> = new EventEmitter<Chofer>();
 
-
-eliminarChofer(indice: any){
-  this.msj.preguntarBorrado(this.usuarios[indice].chofer?.legajo);
-}
-
-modificar(chofer: Chofer | undefined){
-  //localStorage.setItem('chofer',JSON.stringify(chofer));
-  this.choferModificado.emit(chofer);
-  
-}
-
-ngOnInit(){
-  if(this.users.getUsuarios().length == 0){
-    this.users.inicioChoferes();
+  eliminarChofer(u: Usuario) {
+    let lgjo = u.chofer?.legajo;
+    this.msj.preguntarBorrado(
+      "Estas seguro de borrar el chofer " + lgjo + "?",
+      "No hay vuelta atras despues de aceptar",
+      "Borrar",
+      "Cancelar").then((result) => {
+        if (result.isConfirmed) {
+          this.msj.success("Chofer " + lgjo + " borrado!", "Ok");
+          this.users.borrarUsuario(lgjo);
+        } else if (result.isDismissed) {
+          this.msj.info("No se borro el chofer " + lgjo, "Ok");
+        }
+      })
   }
-  this.usuarios = this.users.getUsuarios();
-}
 
-constructor(private users : UsersService, private msj : MensajesService){}
+  modificar(chofer: Chofer | undefined) {
+    this.choferModificado.emit(chofer);
+  }
+
+  ngOnInit() {
+    if (this.users.getUsuarios().length == 0) {
+      this.users.inicioChoferes();
+    }
+    this.usuarios = this.users.getUsuarios();
+  }
+
+  constructor(private users: UsersService, private msj: MensajesService) { }
 }

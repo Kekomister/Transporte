@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Usuario } from '../clases/usuario';
 import { UsersService } from '../services/users.service';
 import { Chofer } from '../clases/chofer';
@@ -10,13 +10,19 @@ import { interval } from 'rxjs';
   templateUrl: './busqueda.component.html',
   styleUrls: ['./busqueda.component.css']
 })
-export class BusquedaComponent {
+export class BusquedaComponent implements OnChanges, OnInit {
   usuarios: Usuario[] = [];
   usuariosElegidos: Usuario[] = [];
   @Input() aBuscar: string = "";
   @Output() choferModificado: EventEmitter<Chofer> = new EventEmitter<Chofer>();
 
   constructor(private users: UsersService, private msj: MensajesService) { }
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    this.buscar();
+  }
 
   ngOnInit() {
     if (this.users.getUsuarios().length == 0) {
@@ -35,17 +41,24 @@ export class BusquedaComponent {
     }
   }
 
-  eliminarChofer(indice: any) {
-    // this.msj.preguntarBorrado(this.usuariosElegidos[indice].chofer?.legajo);
-    this.users.borrarUsuario(this.usuariosElegidos[indice].chofer?.legajo);
-    // setTimeout(() => {
-    //   this.buscar();
-    // }, 30000);
-    this.buscar();
+  eliminarChofer(u: Usuario) {
+    let lgjo = u.chofer?.legajo;
+    this.msj.preguntarBorrado(
+      "Estas seguro de borrar el chofer " + lgjo + "?",
+      "No hay vuelta atras despues de aceptar",
+      "Borrar",
+      "Cancelar").then((result) => {
+        if (result.isConfirmed) {
+          this.msj.success("Chofer " + lgjo + " borrado!", "Ok");
+          this.users.borrarUsuario(lgjo);
+          this.buscar();
+        } else if (result.isDismissed) {
+          this.msj.info("No se borro el chofer " + lgjo, "Ok");
+        }
+      })
   }
 
   modificar(chofer: Chofer | undefined) {
-    //localStorage.setItem('chofer',JSON.stringify(chofer));
     this.choferModificado.emit(chofer);
   }
 

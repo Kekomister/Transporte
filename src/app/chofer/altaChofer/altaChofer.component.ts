@@ -4,6 +4,7 @@ import { Chofer } from 'src/app/clases/chofer';
 import { Usuario } from 'src/app/clases/usuario';
 import { ChequeosService } from 'src/app/services/chequeos.service';
 import { UsersService } from 'src/app/services/users.service';
+import { CalendarModule } from 'primeng/calendar';
 
 @Component({
   selector: 'app-altaChofer',
@@ -13,6 +14,8 @@ import { UsersService } from 'src/app/services/users.service';
 export class AltaChoferComponent {
   usuarios: Usuario[] = [];
   @Output() agregar: EventEmitter<Usuario> = new EventEmitter<Usuario>();
+
+  date : Date | undefined;
 
   // datos personales
   dni: number | undefined;

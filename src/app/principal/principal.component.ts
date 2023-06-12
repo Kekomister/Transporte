@@ -15,6 +15,7 @@ export class PrincipalComponent implements OnInit {
   opciones = ["Nombre", "Por matricula", "Parada en ciudad", "Ciudad destino"];
   opcionElegida: string | undefined;
   busqueda: string = "";
+  campoABuscar : string = "";
   choferModificar: Chofer | undefined;
 
   crearChofer() {
@@ -27,6 +28,7 @@ export class PrincipalComponent implements OnInit {
 
   buscar(): void {
     if (this.opcionElegida == this.opciones[0]) {
+      this.campoABuscar = this.busqueda;
       this.pagina = "busqueda";
     }
   }

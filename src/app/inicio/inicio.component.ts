@@ -27,12 +27,12 @@ export class InicioComponent {
       }
     }
     if(!this.entrar){
-      this.msj.usuarioIncorrecto();
+      this.msj.error("Usuario no reconocido","Contraseña/usuario mal escrito o inexistente","Entendido");
     }
   }
 
   ingresar(){
-    this.msj.ingreso();
+    this.msj.success("Ingresado correctamente!", "Genial");
     this.entrar = true;
     this.router.navigate(['/principal']);
   }
