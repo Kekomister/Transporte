@@ -16,7 +16,6 @@ import { CiudadComponent } from './ciudad/ciudad.component';
 import { AutobusComponent } from './autobus/autobus.component';
 import { ModificarChoferComponent } from './chofer/modificar-chofer/modificar-chofer.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +33,7 @@ import { ModificarChoferComponent } from './chofer/modificar-chofer/modificar-ch
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

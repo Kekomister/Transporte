@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Chofer } from 'src/app/clases/chofer';
 import { Usuario } from 'src/app/clases/usuario';
 import { ChequeosService } from 'src/app/services/chequeos.service';
+import { MensajesService } from 'src/app/services/mensajes.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -31,11 +32,11 @@ export class ModificarChoferComponent implements OnInit {
     let numeros = [this.dni, this.legajo];
     estaVacio = this.chequeos.verificarString(textos);
     if (estaVacio) {
-      alert("Algo esta vacio");
+      this.msj.error("Error","Algo esta vacio","Entendido");
     } else {
       estaVacio = this.chequeos.verificarNumber(numeros);
       if (estaVacio) {
-        alert("Dni o Legajo esta vacio");
+        this.msj.error("Error","Dni esta vacio","Entendido");
       } else {
         this.verificarRegistro();
       }
@@ -46,6 +47,7 @@ export class ModificarChoferComponent implements OnInit {
     let chofer: Chofer = new Chofer(this.dni, this.legajo, this.nombre, this.apellido, this.fechaNac);
     this.chofer = chofer;
     this.users.modificarChofer(this.chofer);
+    this.msj.success("Modificado!","Genial");
     this.volver();
   }
 
@@ -53,7 +55,7 @@ export class ModificarChoferComponent implements OnInit {
     this.agregar.emit("asdsad");
   }
 
-  constructor(private router: Router, private chequeos: ChequeosService, private users: UsersService) { }
+  constructor(private msj : MensajesService, private chequeos: ChequeosService, private users: UsersService) { }
 
   ngOnInit(): void {
     this.dni = this.chofer?.dni;

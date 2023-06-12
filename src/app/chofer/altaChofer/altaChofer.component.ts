@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Chofer } from 'src/app/clases/chofer';
 import { Usuario } from 'src/app/clases/usuario';
 import { ChequeosService } from 'src/app/services/chequeos.service';
+import { MensajesService } from 'src/app/services/mensajes.service';
 import { UsersService } from 'src/app/services/users.service';
-import { CalendarModule } from 'primeng/calendar';
 
 @Component({
   selector: 'app-altaChofer',
@@ -14,8 +14,6 @@ import { CalendarModule } from 'primeng/calendar';
 export class AltaChoferComponent {
   usuarios: Usuario[] = [];
   @Output() agregar: EventEmitter<Usuario> = new EventEmitter<Usuario>();
-
-  date : Date | undefined;
 
   // datos personales
   dni: number | undefined;
@@ -41,11 +39,11 @@ export class AltaChoferComponent {
 
     estaVacio = this.chequeos.verificarString(textos);
     if(estaVacio){
-      alert("Algo esta vacio");
+      this.msj.error("Error","Algo esta vacio","Entendido");
     }else{
       estaVacio = this.chequeos.verificarNumber(numeros);
       if(estaVacio){
-        alert("Dni o Legajo esta vacio");
+        this.msj.error("Error","Dni o Legajo esta vacio","Entendido");
       }else{
         this.verificarRegistro();
       }
@@ -57,24 +55,24 @@ export class AltaChoferComponent {
     let hayProblema = false;
     let c = new Chofer(this.dni, this.legajo, this.nombre, this.apellido, this.fechaNac);
     let u = new Usuario(this.usuario, this.mail, this.contrasenia, c);
-
+    
     hayProblema = this.verificarContra(u);
     if (!hayProblema) {
       hayProblema = this.verificarChofer(c);
       if (!hayProblema) {
         hayProblema = this.verificarUsuario(u);
         if (!hayProblema) {
-          alert("Registrado!");
+          this.msj.success("Registrado!","Genial");
           this.usuarioPermitido = u;
           this.volver();
         } else {
-          alert("Ya esta registrado ese mail!");
+          this.msj.error("Error","Ya esta registrado ese mail o usuario!","Ok");
         }
       } else {
-        alert("Ya esta registrado ese legajo!");
+        this.msj.error("Error","Ya esta registrado ese legajo!","Ok");
       }
     } else {
-      alert("Las contraseñas no coinciden!");
+      this.msj.error("Error","Las contraseñas no coinciden!","Ok");
     }
   }
 
@@ -110,7 +108,7 @@ export class AltaChoferComponent {
     this.agregar.emit(this.usuarioPermitido);
   }
 
-  constructor(private router: Router, private chequeos : ChequeosService, private users : UsersService) { }
+  constructor(private chequeos : ChequeosService, private users : UsersService, private msj : MensajesService) { }
 
   ngOnInit() {
     this.usuarios = this.users.getUsuarios();
