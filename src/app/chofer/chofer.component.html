@@ -1,23 +1,24 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Legajo</th>
-            <th>Dni</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Fecha de Nacimiento</th>
+            <th><b>LEGAJO</b></th>
+            <th><b>DNI</b></th>
+            <th><b>NOMBRE</b></th>
+            <th><b>APELLIDO</b></th>
+            <th><b>FECHA DE NACIMIENTO</b></th>
+            <th><b>ACCIONES</b></th>
         </tr>
     </thead>
-    <tbody *ngFor = "let u of usuarios, let indice = index">
+    <tbody *ngFor="let u of usuarios, let indice = index">
         <tr>
-            <td> {{u.chofer?.legajo}} </td>
-            <td> {{u.chofer?.dni}} </td>
-            <td> {{u.chofer?.nombre}} </td>
-            <td> {{u.chofer?.apellido}} </td>
-            <td> {{u.chofer?.fechaNac}} </td>
-            <button (click)="modificar(u.chofer)">Modificar</button>
-            <button (click)="eliminarChofer(u)"> Eliminar </button>
+            <td><b> {{u.chofer?.legajo}}</b> </td>
+            <td><b>{{u.chofer?.dni}}</b> </td>
+            <td><b> {{u.chofer?.nombre}}</b> </td>
+            <td><b>{{u.chofer?.apellido}} </b></td>
+            <td> <b>{{u.chofer?.fechaNac}}</b> </td>
+            <button class="button_1" (click)="modificar(u.chofer)">Modificar</button>
+            <button class="button_2" (click)="eliminarChofer(u)"> Eliminar </button>
         </tr>
-        
+
     </tbody>
 </table>

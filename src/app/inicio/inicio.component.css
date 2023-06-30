@@ -6,27 +6,30 @@
     border: 1px solid;
     padding: 10px;
     text-align: center;
+    background-image: url("https://t3.ftcdn.net/jpg/02/46/11/02/240_F_246110293_xxOwrVGSXYfcpuWTgbGCO9C0e0hm8gyw.jpg"); 
+    
   }
 
 .datos{
+    color: rgb(243, 238, 243);
     margin-top: 15px;
     font-size: 20px;
-    font-style: italic;
+    font-style:initial;
     font-weight: bolder;
 }
 
 h3{
     margin: 5px;
     margin-top: 10px;
-    background-color: #1ddfa5; /* Green */
+    /* background-color: #ad06c4;  */
     border: none;
-    color: white;
+    color: rgb(243, 236, 241);
     padding: 5px 12px;
     text-align: center;
     text-decoration: none;
-    font-style: italic;
+    font-style:normal;
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 
@@ -34,12 +37,21 @@ h3{
 button {
     margin: 5px;
     margin-top: 20px;
-    background-color: #1ddfa5; /* Green */
+    background-color: #0f2eb9; /* Green */
     border: none;
-    color: white;
+    color: rgb(111, 164, 233);
     padding: 5px 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
 }
+
+body {
+    background-image: url("https://t4.ftcdn.net/jpg/04/84/11/15/240_F_484111532_W0WOkKeXQzF75XusA7R8e3llIDXqyCFm.jpg"); 
+   /* background-image: url("https://img.freepik.com/vector-premium/estacion-autobuses-escenas-exteriores_1300-1169.jpg?w=1380"); */
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: center;
+   background-size: cover;
+ }

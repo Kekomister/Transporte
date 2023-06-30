@@ -1,0 +1,29 @@
+.button_1 {
+    margin: 5px;
+    margin-top: 20px;
+    background-color: #c09e05; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button_2 {
+    margin: 5px;
+    margin-top: 20px;
+    background-color: #ce0653; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+table th{
+    width: 17%;
+}

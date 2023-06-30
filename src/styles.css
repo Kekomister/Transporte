@@ -1,9 +1,12 @@
 
 
 body {
-    background-image: url("https://img.freepik.com/vector-premium/estacion-autobuses-escenas-exteriores_1300-1169.jpg?w=1380");
+     /* background-image: url("https://st4.depositphotos.com/11221732/30080/i/450/depositphotos_300806266-stock-photo-blue-day-clear-sky-with.jpg");  */
+    background-image: url("https://img.freepik.com/vector-premium/fondo-blanco-circuito-tecnologia-azul_583398-369.jpg?w=2000");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
   }
+
+

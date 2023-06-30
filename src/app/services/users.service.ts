@@ -7,7 +7,7 @@ import { Chofer } from '../clases/chofer';
 })
 export class UsersService {
 
-  private master = {"Usuario" : "Jefe", "Contrasenia" : "12345"};
+  private master = {"Usuario" : "Admin", "Contrasenia" : "Ifts.ds24?"};
   private usuarios : Usuario[] = [];
 
   public getMasterUser(){
